@@ -14,21 +14,26 @@ else:
 
 Random_number = random.randint(0,limite)
 
-guesses = 0
+attempts = 0
 
 while True:
-    guesses += 1
+    attempts += 1
     guess = input(f"Please Guess a number between 0 and {limite} and you have 3 guesses \n")
-    if guesses == 3:
+    if guess.isdigit():
+        guess = int(guess)
+    else:
+        print("Please choose a number next time")
+        continue
+    if attempts == 3:
         print("Sorry, You're out of guesses")
         break
 
     if int(guess) == Random_number:
-        print(f"You guessed right! good job, the right number is {guess} and you got it in {guesses} guesses")
+        print(f"You guessed right! good job, the right number is {guess} and you got it in {attempts} guesses")
         break
     elif int(guess) > Random_number:
-        print(f"Too high, guess lower, you have {3-guesses} guesses left \n")
+        print(f"Too high, guess lower, you have {3-attempts} guesses left \n")
         continue
     else:
-        print(f"Too low, guess higher, you have {3-guesses} guesses left \n")
+        print(f"Too low, guess higher, you have {3-attempts} guesses left \n")
         continue
